@@ -1,21 +1,15 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { Spin, message } from "antd"; // Import Ant Design components
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectLabel,
-  SelectGroup,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
 import { FaPhoneAlt, FaEnvelope, FaMapMarkedAlt } from "react-icons/fa";
+import emailjs from "emailjs-com";
+import { motion } from "framer-motion";
 
+// Contact info array
 const info = [
   {
     icon: <FaPhoneAlt />,
@@ -34,9 +28,66 @@ const info = [
   },
 ];
 
-import { motion } from "framer-motion";
-
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false); // State for loading
+
+  // Handle form change
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Handle form submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true); // Start loading
+
+    // Validation: Check if all fields are filled
+    if (!formData.name || !formData.email || !formData.message) {
+      setLoading(false); // Stop loading
+      message.warning("Please fill in all fields."); // Show warning message
+      return; // Stop submission
+    }
+
+    // Log the form data to the console
+    console.log("Form data being sent:", formData);
+
+    // Send email via EmailJS
+    emailjs
+      .send(
+        "service_5bxijzi", // Your EmailJS service ID
+        "template_h79ei1j", // Your EmailJS template ID
+        formData, // The data being sent
+        "KafcRLly_FhfP5GHu" // Your EmailJS user ID
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          message.success("Message sent successfully!"); // Display success toast
+        },
+        (error) => {
+          console.log(error.text);
+          message.error("Failed to send message. Please try again."); // Display error toast
+        }
+      )
+      .finally(() => {
+        setLoading(false); // Stop loading regardless of success or error
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      });
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -48,13 +99,23 @@ const Contact = () => {
           ease: "easeIn",
         },
       }}
-      className="py-6"
+      className="relative py-6"
     >
+      {/* Loading Overlay */}
+      {loading && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <Spin size="large" />
+        </div>
+      )}
+
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
           {/* form */}
           <div className="xl:w-[54%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+            >
               <h3 className="text-4xl text-accent">Let&apos;s work together</h3>
               <p className="text-white/60">
                 Interested in collaborating? Whether it&apos;s freelance work or
@@ -63,30 +124,39 @@ const Contact = () => {
               </p>
               {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input label="Name" placeholder="Your name" />
-                <Input label="Email" placeholder="Your email" />
+                <div>
+                  <Input
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div>
+                  <Input
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Your email"
+                    type="email"
+                    required
+                  />
+                </div>
               </div>
-              {/* select */}
-              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select Service" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="est">Web Development</SelectItem>
-                    <SelectItem value="cst">Mobile Development</SelectItem>
-                    <SelectItem value="mst">UI/UX Design</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+
               {/* textarea */}
               <Textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 className="h-[200px]"
                 placeholder="Type your message here ..."
+                required
               />
+
               {/* button */}
-              <Button size="md" className="max-w-40 px-6 py-3">
+              <Button type="submit" size="md" className="max-w-40 px-6 py-3">
                 Send Message
               </Button>
             </form>
