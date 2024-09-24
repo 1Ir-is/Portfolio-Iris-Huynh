@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Spin, message } from "antd"; // Import Ant Design components
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -36,6 +36,38 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false); // State for loading
+  const [canSendMessage, setCanSendMessage] = useState(true); // State to track sending ability
+  const [remainingTime, setRemainingTime] = useState(0); // State for countdown timer
+
+  // Effect to check if the user can send a message on component mount
+  useEffect(() => {
+    const lastMessageSent = localStorage.getItem("lastMessageSent");
+    if (lastMessageSent) {
+      const timeElapsed = Date.now() - parseInt(lastMessageSent);
+      // If less than 2 minutes (120000 ms), set canSendMessage to false
+      if (timeElapsed < 2 * 60 * 1000) {
+        setCanSendMessage(false);
+        const remainingTime = 2 * 60 * 1000 - timeElapsed;
+        setRemainingTime(remainingTime);
+
+        // Timer to update remaining time every second
+        const timer = setInterval(() => {
+          setRemainingTime((prevTime) => {
+            if (prevTime <= 1000) {
+              clearInterval(timer);
+              setCanSendMessage(true);
+              localStorage.removeItem("lastMessageSent"); // Clear the timestamp after enabling
+              return 0; // Reset remaining time
+            }
+            return prevTime - 1000; // Decrement remaining time by 1 second
+          });
+        }, 1000);
+
+        // Clean up the timer on component unmount
+        return () => clearInterval(timer);
+      }
+    }
+  }, []);
 
   // Handle form change
   const handleChange = (e) => {
@@ -48,6 +80,14 @@ const Contact = () => {
   // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!canSendMessage) {
+      message.warning(
+        "You should wait for 2 minutes before sending another message."
+      ); // Show warning message
+      return; // Stop submission
+    }
+
     setLoading(true); // Start loading
 
     // Validation: Check if all fields are filled
@@ -72,6 +112,25 @@ const Contact = () => {
         (result) => {
           console.log(result.text);
           message.success("Message sent successfully!"); // Display success toast
+          setCanSendMessage(false); // Disable sending for 2 minutes
+          localStorage.setItem("lastMessageSent", Date.now()); // Store the current time in localStorage
+          setRemainingTime(2 * 60 * 1000); // Set remaining time to 2 minutes
+
+          // Timer to count down remaining time
+          const timer = setInterval(() => {
+            setRemainingTime((prevTime) => {
+              if (prevTime <= 1000) {
+                clearInterval(timer);
+                setCanSendMessage(true);
+                localStorage.removeItem("lastMessageSent"); // Clear the timestamp after enabling
+                return 0; // Reset remaining time
+              }
+              return prevTime - 1000; // Decrement remaining time by 1 second
+            });
+          }, 1000);
+
+          // Clean up the timer on component unmount
+          return () => clearInterval(timer);
         },
         (error) => {
           console.log(error.text);
@@ -86,6 +145,14 @@ const Contact = () => {
           message: "",
         });
       });
+  };
+
+  // Function to format remaining time in mm:ss
+  const formatTime = (milliseconds) => {
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`; // Format as mm:ss
   };
 
   return (
@@ -155,8 +222,20 @@ const Contact = () => {
                 required
               />
 
+              {/* Timer Display */}
+              {!canSendMessage && (
+                <div className="text-red-500">
+                  You can send another message in: {formatTime(remainingTime)}
+                </div>
+              )}
+
               {/* button */}
-              <Button type="submit" size="md" className="max-w-40 px-6 py-3">
+              <Button
+                type="submit"
+                size="md"
+                className="max-w-40 px-6 py-3"
+                disabled={!canSendMessage}
+              >
                 Send Message
               </Button>
             </form>
