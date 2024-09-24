@@ -30,7 +30,7 @@ const Photo = () => {
           className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute"
         >
           <Image
-            src="/assets/assets/photo-iris-removebg-preview.png"
+            src="/assets/assets/my-photo2.png"
             priority
             quality={100}
             fill

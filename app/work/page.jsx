@@ -27,22 +27,87 @@ const projects = [
   {
     num: "01",
     category: "Frontend",
-    title: "Project 1",
-    description: "Project 1 Description",
-    stack: [{ name: "React" }, { name: "Next.js" }, { name: "TailwindCSS" }],
-    image: "/assets/assets/work/thumb1.png",
-    live: "",
-    github: "",
+    title: "eBookSphere",
+    description:
+      "Designed and developed a responsive UI using ReactJS, TailwindCSS, and Flowbite. Deployed front-end on Vercel and Netlify, ensuring scalability. Built and tested features for a smooth user experience. Implemented mock API with JSON Server, deployed on Render. Integrated secure authentication with JSON Server Auth and JWT. Performed manual testing to ensure functionality and responsiveness.",
+    stack: [
+      { name: "ReactJS" },
+      { name: "TailwindCSS" },
+      { name: "Flowbite" },
+      { name: "JSON Server" },
+      { name: "Vercel" },
+    ],
+    image: "/assets/assets/work/eBookSphere.png",
+    live: "https://ebooksphere.vercel.app/",
+    github: "https://github.com/1Ir-is/eBookSphere-ReactApp-Basic",
   },
   {
     num: "02",
     category: "Frontend",
-    title: "Project 1",
-    description: "Project 1 Description",
-    stack: [{ name: "React" }, { name: "Next.js" }, { name: "TailwindCSS" }],
-    image: "/assets/assets/work/thumb1.png",
+    title: "CineAtlas",
+    description:
+      "Built a movie database platform similar to IMDb using ReactJS and TailwindCSS. Integrated movie data from The Movie Database (TMDb) API. Styled with Flowbite for seamless UI design. Deployed on Netlify and Vercel for scalability and performance.",
+    stack: [
+      { name: "ReactJS" },
+      { name: "TailwindCSS" },
+      { name: "Flowbite" },
+      { name: "TMDb API" },
+    ],
+    image: "/assets/assets/work/CineAtlat.png",
+    live: "https://cineatlas.vercel.app/",
+    github: "https://github.com/1Ir-is/CineAtlas-ReactApp-Basic",
+  },
+  {
+    num: "03",
+    category: "Fullstack",
+    title: "Car Rental System (Final Year Project)",
+    description:
+      "Developed a car rental platform with separate interfaces for users, car owners, and admins. Built user and car owner front-end with React.js, Tailwind CSS, Ant Design, and custom CSS. Integrated Google Login, PayPal, TalkJS, and Cloudinary for enhanced functionality. Back-end developed with ASP.NET Core and SQL Server for robust API interactions. Admin site built using ASP.NET Core MVC with a responsive interface.",
+    stack: [
+      { name: "ReactJS" },
+      { name: "TailwindCSS" },
+      { name: "Ant Design" },
+      { name: "ASP.NET Core" },
+      { name: "SQL Server" },
+    ],
+    image: "/assets/assets/work/Carental.png",
     live: "",
-    github: "",
+    github:
+      "https://github.com/1Ir-is/FinalYearProject-CarRental-FrontEnd-Remake",
+  },
+  {
+    num: "04",
+    category: "IoT",
+    title: "Smart Car Parking System",
+    description:
+      "Developed a smart car parking system using Arduino and C++ for automatic parking detection and slot management. The system used sensors to detect the presence of vehicles and displayed the availability of parking slots on an LCD screen. It was designed to help users easily find available parking spaces.",
+    stack: [
+      { name: "Arduino" },
+      { name: "C++" },
+      { name: "Sensors" },
+      { name: "LCD Display" },
+    ],
+    image: "/assets/assets/work/IoT.png",
+    live: "",
+    github:
+      "https://github.com/1Ir-is/Internet-Of-Thing-Assignment-Project.git",
+  },
+  {
+    num: "05",
+    category: "Fullstack",
+    title: "AMaz System",
+    description:
+      "AMaz is a web-based Article Magazine System developed using .NET 6 MVC framework. It aims to facilitate the submission, review, and publication process of articles and images contributed by students in various faculties within a university setting. The system includes features to ensure smooth coordination between students, faculty marketing coordinators, and the university marketing manager.",
+    stack: [
+      { name: ".NET 6" },
+      { name: "MVC Framework" },
+      { name: "Entity Framework Core" },
+      { name: "HTML/CSS/JavaScript" },
+      { name: "Bootstrap" },
+    ],
+    image: "/assets/assets/work/Amaz.png",
+    live: "",
+    github: "https://github.com/EnterpriseWebGang/AMaz.git",
   },
 ];
 
@@ -87,44 +152,49 @@ const Work = () => {
               <ul className="flex gap-4">
                 {project.stack.map((item, index) => {
                   return (
-                    <li key={index} className="text=xl text-accent">
+                    <li key={index} className="text-xl text-accent">
                       {item.name}
-                      {/* remove the last comma */}
-                      {index !== project.stack.length - 1 && ","}
+                      {/* Add comma only if it's not the last item */}
+                      {index < project.stack.length - 1 && ","}
                     </li>
                   );
                 })}
               </ul>
+
               <div className="border border-white/20"></div>
               {/* button */}
               <div className="flex items-center gap-4">
                 {/* live project button */}
-                <Link href={project.live}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Live project</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
+                {project.live && (
+                  <Link href={project.live}>
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                          <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Live project</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Link>
+                )}
 
                 {/* github project button */}
-                <Link href={project.live}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsGithub className="text-white text-3xl group-hover:text-accent" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Github project</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
+                {project.github && (
+                  <Link href={project.github}>
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                          <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Github project</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
