@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image"; // Import the Image component
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -38,7 +39,15 @@ const MobileNav = () => {
       </SheetTrigger>
       <SheetContent className="flex flex-col">
         {/* logo */}
-        <div className="mt-32 mb-40 text-center text-2xl">logo</div>
+        <div className="mt-32 mb-40 text-center">
+          <Image
+            src="/assets/assets/logo.png" // Path to your logo image
+            alt="Logo"
+            width={150} // Set the desired width
+            height={50} // Set the desired height
+            className="mx-auto" // Center the image
+          />
+        </div>
         {/* nav */}
         <nav className="flex flex-col justify-center items-center gap-8">
           {links.map((link, index) => {
