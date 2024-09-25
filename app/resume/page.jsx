@@ -235,7 +235,9 @@ const Resume = () => {
                     {skills.description}
                   </p>
                 </div>
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-[30px]">
+
+                {/* Added responsive gap and padding */}
+                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 xl:gap-[30px] p-4">
                   {skills.items.map((item, index) => {
                     return (
                       <li key={index}>
@@ -257,6 +259,7 @@ const Resume = () => {
                 </ul>
               </div>
             </TabsContent>
+
             {/* about */}
             <TabsContent
               value="about"

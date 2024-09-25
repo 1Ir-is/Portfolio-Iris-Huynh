@@ -87,8 +87,8 @@ const Home = () => {
       {/* Modal for selecting CV */}
       {modalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-primary p-6 rounded shadow-lg">
-            <h2 className="text-lg font-semibold mb-4">
+          <div className="bg-primary p-4 sm:p-6 md:p-8 rounded shadow-lg w-full sm:w-4/5 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-4 sm:mx-auto">
+            <h2 className="text-lg font-semibold mb-4 text-center sm:text-center">
               Select CV to Download
             </h2>
             <ul className="flex flex-col">
@@ -104,13 +104,16 @@ const Home = () => {
                 </li>
               ))}
             </ul>
-            <Button
-              variant="outline"
-              className="mt-4"
-              onClick={() => setModalOpen(false)} // Close modal
-            >
-              Close
-            </Button>
+
+            {/* Centering the close button on mobile */}
+            <div className="mt-4 w-full flex justify-center sm:justify-start">
+              <Button
+                variant="outline"
+                onClick={() => setModalOpen(false)} // Close modal
+              >
+                Close
+              </Button>
+            </div>
           </div>
         </div>
       )}

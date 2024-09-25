@@ -43,7 +43,7 @@ const MobileNav = () => {
           <Image
             src="/assets/assets/logo.png" // Path to your logo image
             alt="Logo"
-            width={150} // Set the desired width
+            width={100} // Set the desired width
             height={50} // Set the desired height
             className="mx-auto" // Center the image
           />
