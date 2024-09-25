@@ -29,7 +29,7 @@ const projects = [
     category: "Frontend",
     title: "eBookSphere",
     description:
-      "Designed and developed a responsive UI using ReactJS, TailwindCSS, and Flowbite. Deployed front-end on Vercel and Netlify, ensuring scalability. Built and tested features for a smooth user experience. Implemented mock API with JSON Server, deployed on Render. Integrated secure authentication with JSON Server Auth and JWT. Performed manual testing to ensure functionality and responsiveness.",
+      "eBookSphere is an online platform for purchasing eBooks. The application is built with modern web technologies to ensure a smooth and efficient user experience. Designed and developed a responsive UI using ReactJS, TailwindCSS, and Flowbite. Deployed front-end on Vercel and Netlify, ensuring scalability. Built and tested features for a smooth user experience. Implemented mock API with JSON Server, deployed on Render. Integrated secure authentication with JSON Server Auth and JWT. Performed manual testing to ensure functionality and responsiveness.",
     stack: [
       { name: "ReactJS" },
       { name: "TailwindCSS" },
@@ -46,7 +46,7 @@ const projects = [
     category: "Frontend",
     title: "CineAtlas",
     description:
-      "Built a movie database platform similar to IMDb using ReactJS and TailwindCSS. Integrated movie data from The Movie Database (TMDb) API. Styled with Flowbite for seamless UI design. Deployed on Netlify and Vercel for scalability and performance.",
+      "CineAtlas is a comprehensive movie database platform, similar to IMDb, where users can explore and discover movies. The project is built using React.js, styled with Tailwind CSS, and leverages components from Flowbite. Movie data is sourced from The Movie Database (TMDb) API.",
     stack: [
       { name: "ReactJS" },
       { name: "TailwindCSS" },
@@ -62,7 +62,7 @@ const projects = [
     category: "Fullstack",
     title: "Car Rental System (Final Year Project)",
     description:
-      "Developed a car rental platform with separate interfaces for users, car owners, and admins. Built user and car owner front-end with React.js, Tailwind CSS, Ant Design, and custom CSS. Integrated Google Login, PayPal, TalkJS, and Cloudinary for enhanced functionality. Back-end developed with ASP.NET Core and SQL Server for robust API interactions. Admin site built using ASP.NET Core MVC with a responsive interface.",
+      "This project is a comprehensive car rental platform with separate interfaces for users, car owners, and administrators, providing a seamless experience for all users. The system allows users to rent cars, car owners to list their vehicles, and administrators to manage the platform. The front-end for users and car owners is built with React.js, Tailwind CSS, Ant Design, and custom CSS, ensuring a responsive and modern user interface. Key integrations include Google Login, PayPal for payments, TalkJS for chat functionality, and Cloudinary for image uploads. The back-end is developed using ASP.NET Core and SQL Server to enable robust API interactions, while the admin site is built using ASP.NET Core MVC with a responsive design for efficient platform management.",
     stack: [
       { name: "ReactJS" },
       { name: "TailwindCSS" },
@@ -209,16 +209,16 @@ const Work = () => {
             >
               {projects.map((project, index) => {
                 return (
-                  <SwiperSlide key={index} className="w-full">
-                    <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20">
+                  <SwiperSlide key={index} className="w-full rounded-2xl">
+                    <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20 rounded-2xl">
                       {/* overlay */}
-                      <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+                      <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10 rounded-2xl"></div>
                       {/* image */}
-                      <div className="relative w-full h-full">
+                      <div className="relative w-full h-full rounded-2xl overflow-hidden">
                         <Image
                           src={project.image}
                           fill
-                          className="object-cover"
+                          className="object-cover rounded-2xl shadow-lg object-center"
                           alt=""
                         />
                       </div>
@@ -228,7 +228,8 @@ const Work = () => {
               })}
               <WorkSliderBtns
                 containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
+                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] rounded-full flex justify-center items-center transition-all"
+                iconStyles="text-2xl"
               />
             </Swiper>
           </div>

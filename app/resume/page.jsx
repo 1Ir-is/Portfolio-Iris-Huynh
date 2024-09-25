@@ -8,7 +8,7 @@ import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
 const about = {
   title: "About Me",
   description:
-    "I am a student with a passion for creating beautiful, user-friendly websites. I have experience in front-end and back-end development, as well as UI/UX design. I am proficient in HTML, CSS, JavaScript, React, .NET, Tailwind CSS, and Next.js.",
+    "I am a final-year student with a passion for creating beautiful, user-friendly websites. I have experience in front-end and back-end development, as well as UI/UX design. I am proficient in HTML, CSS, JavaScript, React, .NET, Tailwind CSS, and Next.js.",
   info: [
     {
       fieldName: "Name",
@@ -136,11 +136,11 @@ const Resume = () => {
           ease: "easeIn",
         },
       }}
-      className="min-h-[80vh] flex items-center justify-center, py-12 xl:py-0"
+      className="min-h-[80vh] flex items-start justify-center py-12 xl:py-0"
     >
       <div className="container mx-auto">
         <Tabs
-          defaultValue="Experience"
+          defaultValue="experience"
           className="flex flex-col xl:flex-row gap-[60px]"
         >
           <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0">
@@ -149,6 +149,7 @@ const Resume = () => {
             <TabsTrigger value="skills">Skills</TabsTrigger>
             <TabsTrigger value="about">About</TabsTrigger>
           </TabsList>
+
           {/* content */}
           <div className="min-h-[70vh] w-full">
             {/* experience */}
@@ -226,6 +227,7 @@ const Resume = () => {
                 </ScrollArea>
               </div>
             </TabsContent>
+
             {/* skills */}
             <TabsContent value="skills" className="w-full">
               <div className="flex flex-col gap-[30px]">
@@ -236,23 +238,16 @@ const Resume = () => {
                   </p>
                 </div>
 
-                {/* Added responsive gap and padding */}
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 xl:gap-[30px] p-4">
-                  {skills.items.map((item, index) => {
+                {/* Responsive gap and padding adjustments */}
+                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
+                  {skills.items.map((skill, index) => {
                     return (
-                      <li key={index}>
-                        <TooltipProvider delayDuration={100}>
-                          <Tooltip>
-                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                              <div className="text-6xl group-hover:text-accent transition-all duration-300">
-                                {item.icon}
-                              </div>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p className="capitalize">{item.name}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
+                      <li
+                        key={index}
+                        className="flex flex-col items-center gap-2 p-4 rounded-lg bg-[#232329] text-white"
+                      >
+                        <div className="text-4xl">{skill.icon}</div>
+                        <p className="text-sm font-medium">{skill.name}</p>
                       </li>
                     );
                   })}
@@ -261,24 +256,19 @@ const Resume = () => {
             </TabsContent>
 
             {/* about */}
-            <TabsContent
-              value="about"
-              className="w-full text-center xl:text-left"
-            >
-              <div className="flex flex-col gap-[30px]">
+            <TabsContent value="about" className="w-full">
+              <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{about.title}</h3>
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                   {about.description}
                 </p>
-                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
+
+                <ul className="flex flex-col gap-3 items-center xl:items-start">
                   {about.info.map((item, index) => {
                     return (
-                      <li
-                        key={index}
-                        className="flex items-center justify-center xl:justify-start gap-4"
-                      >
-                        <span className="text-white/60">{item.fieldName}</span>
-                        <span className="text-xl">{item.fieldValue}</span>
+                      <li key={index} className="flex gap-4">
+                        <span className="font-medium">{item.fieldName}:</span>
+                        <span className="text-white/60">{item.fieldValue}</span>
                       </li>
                     );
                   })}
