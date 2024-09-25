@@ -48,17 +48,15 @@ const Home = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span>Front-End Developer</span>
             <h1 className="h1 mb-6">
               Hello I&apos;m <br />
               <span className="text-accent">Iris Huynh</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              I am a front-end developer currently studying at the University of
-              Greenwich. Though I am new to the field, I am passionate about web
-              development and eager to learn and grow. I am actively seeking
-              opportunities to build my skills and start my career in the tech
-              industry.
+              I am student at the University of Greenwich. Though I am new to
+              the field, I am passionate about web development and eager to
+              learn and grow. I am actively seeking opportunities to build my
+              skills and start my career in the tech industry.
             </p>
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">

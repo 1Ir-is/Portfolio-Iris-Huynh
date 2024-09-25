@@ -8,7 +8,7 @@ import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
 const about = {
   title: "About Me",
   description:
-    "I am a web developer with a passion for creating beautiful, user-friendly websites. I have experience in front-end and back-end development, as well as UI/UX design. I am proficient in HTML, CSS, JavaScript, React, .NET, Tailwind CSS, and Next.js.",
+    "I am a student with a passion for creating beautiful, user-friendly websites. I have experience in front-end and back-end development, as well as UI/UX design. I am proficient in HTML, CSS, JavaScript, React, .NET, Tailwind CSS, and Next.js.",
   info: [
     {
       fieldName: "Name",
