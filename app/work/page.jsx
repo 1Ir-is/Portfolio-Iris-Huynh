@@ -149,12 +149,14 @@ const Work = () => {
               {/* project description */}
               <p className="text-white/60">{project.description}</p>
               {/* stack */}
-              <ul className="flex gap-4">
+              <ul className="flex gap-4 flex-wrap text-center">
                 {project.stack.map((item, index) => {
                   return (
-                    <li key={index} className="text-xl text-accent">
+                    <li
+                      key={index}
+                      className="text-lg md:text-xl text-accent whitespace-nowrap"
+                    >
                       {item.name}
-                      {/* Add comma only if it's not the last item */}
                       {index < project.stack.length - 1 && ","}
                     </li>
                   );
