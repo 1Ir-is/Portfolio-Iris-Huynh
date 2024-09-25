@@ -10,23 +10,23 @@ import Stats from "@/components/Stats";
 // Updated array of CV file URLs
 const cvFiles = [
   {
-    name: "CV HUYNH MINH HUY - Fresher AI Engineer",
+    name: "Fresher AI Engineer",
     url: "/CV HUYNH MINH HUY - CV - Fresher AI Engineer.pdf",
   },
   {
-    name: "CV HUYNH MINH HUY - Fresher Data Engineer",
+    name: "Fresher Data Engineer",
     url: "/CV HUYNH MINH HUY - CV - Fresher Data Engineer.pdf",
   },
   {
-    name: "CV HUYNH MINH HUY - Fresher QA",
+    name: "Fresher QA",
     url: "/CV HUYNH MINH HUY - CV - QA.pdf",
   },
   {
-    name: "CV HUYNH MINH HUY - Fresher .NET",
+    name: "Fresher .NET",
     url: "/CV HUYNH MINH HUY - CV-.NET-TopCV.vn.pdf",
   },
   {
-    name: "CV HUYNH MINH HUY - Fresher Frontend",
+    name: "Fresher Frontend",
     url: "/CV HUYNH MINH HUY - CV-Fresher-Frontend.pdf",
   },
 ];
@@ -53,10 +53,12 @@ const Home = () => {
               <span className="text-accent">Iris Huynh</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              I am student at the University of Greenwich. Though I am new to
-              the field, I am passionate about web development and eager to
-              learn and grow. I am actively seeking opportunities to build my
-              skills and start my career in the tech industry.
+              I am a final-year student at the University of Greenwich, with a
+              Bachelor's degree in Computing. With a GPA of 3.3/4.0, I am
+              passionate about web development and eager to continue learning
+              and growing in the tech industry. I am actively seeking
+              opportunities to further develop my skills and kick-start my
+              career.
             </p>
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
@@ -87,7 +89,7 @@ const Home = () => {
       {/* Modal for selecting CV */}
       {modalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-primary p-4 sm:p-6 md:p-8 rounded shadow-lg w-full sm:w-4/5 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-4 sm:mx-auto">
+          <div className="bg-primary p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg w-full sm:w-4/5 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-4 sm:mx-auto">
             <h2 className="text-lg font-semibold mb-4 text-center sm:text-center">
               Select CV to Download
             </h2>
