@@ -2,46 +2,11 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { FiDownload } from "react-icons/fi";
 import Socials from "@/components/Socials";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
 
-// Updated array of CV file URLs
-const cvFiles = [
-  {
-    name: "Fresher AI Engineer",
-    url: "/CV HUYNH MINH HUY - CV - Fresher AI Engineer.pdf",
-  },
-  {
-    name: "Fresher Data Engineer",
-    url: "/CV HUYNH MINH HUY - CV - Fresher Data Engineer.pdf",
-  },
-  {
-    name: "Fresher QA",
-    url: "/CV HUYNH MINH HUY - CV - QA.pdf",
-  },
-  {
-    name: "Fresher .NET",
-    url: "/CV HUYNH MINH HUY - CV-.NET-TopCV.vn.pdf",
-  },
-  {
-    name: "Fresher Frontend",
-    url: "/CV HUYNH MINH HUY - CV-Fresher-Frontend.pdf",
-  },
-];
-
 const Home = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const handleDownload = (url) => {
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = url.split("/").pop(); // Use the filename from the URL
-    link.click();
-    setModalOpen(false); // Close the modal after download
-  };
-
   return (
     <section className="h-full">
       <div className="container mx-auto h-full">
@@ -60,17 +25,8 @@ const Home = () => {
               opportunities to further develop my skills and kick-start my
               career.
             </p>
-            {/* btn and socials */}
+            {/* socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button
-                variant="outline"
-                size="lg"
-                className="uppercase flex items-center gap-2"
-                onClick={() => setModalOpen(true)} // Open modal on click
-              >
-                <span>Download CV</span>
-                <FiDownload className="text-xl ml-2" />
-              </Button>
               <div className="mb-8 xl:mb-0">
                 <Socials
                   containerStyles="flex gap-6"
@@ -85,40 +41,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      {/* Modal for selecting CV */}
-      {modalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-primary p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg w-full sm:w-4/5 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-4 sm:mx-auto">
-            <h2 className="text-lg font-semibold mb-4 text-center sm:text-center">
-              Select CV to Download
-            </h2>
-            <ul className="flex flex-col">
-              {cvFiles.map((cv, index) => (
-                <li key={index} className="mb-2">
-                  <Button
-                    variant="outline"
-                    className="w-full"
-                    onClick={() => handleDownload(cv.url)}
-                  >
-                    {cv.name}
-                  </Button>
-                </li>
-              ))}
-            </ul>
-
-            {/* Centering the close button on mobile */}
-            <div className="mt-4 w-full flex justify-center sm:justify-start">
-              <Button
-                variant="outline"
-                onClick={() => setModalOpen(false)} // Close modal
-              >
-                Close
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
 
       <Stats />
     </section>
