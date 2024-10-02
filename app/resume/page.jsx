@@ -41,26 +41,6 @@ const about = {
   ],
 };
 
-// experience data
-const experience = {
-  icon: "/assets/assets/resume/badge.svg",
-  title: "My Experience",
-  description:
-    "As a freelance developer, I have worked on integrating GenAI services into platforms, focusing on data extraction, image classification, and prompt engineering. My experience spans a variety of tasks, including creating tailored data sheets and optimizing AI-driven workflows for better performance.",
-  items: [
-    {
-      role: "Freelance GenAI - eKYC Service",
-      company: "Self-Employed",
-      duration: "June 2024 - Sept 2024",
-      responsibilities: [
-        "Integrating GenAI services (e.g., ChatGPT) into platforms for data extraction and image classification.",
-        "Developing data sheets for countries like Thailand and Japan.",
-        "Testing and optimizing prompts as a prompt engineer to enhance service efficiency.",
-      ],
-    },
-  ],
-};
-
 // education data
 const education = {
   icon: "/assets/assets/resume/cap.svg",
@@ -144,7 +124,6 @@ const Resume = () => {
           className="flex flex-col xl:flex-row gap-[60px]"
         >
           <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0">
-            <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="education">Education</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
             <TabsTrigger value="about">About</TabsTrigger>
@@ -152,48 +131,6 @@ const Resume = () => {
 
           {/* content */}
           <div className="min-h-[70vh] w-full">
-            {/* experience */}
-            <TabsContent value="experience" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{experience.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-                  {experience.description}
-                </p>
-                <ScrollArea className="h-[400px] overflow-auto">
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
-                    {experience.items.map((item, index) => {
-                      return (
-                        <li
-                          key={index}
-                          className="bg-[#232329] h-[auto] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
-                        >
-                          <span className="text-accent">{item.duration}</span>
-                          <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
-                            {item.role}
-                          </h3>
-                          {/* Responsibilities List */}
-                          <ul className="list-disc list-inside text-white/60 text-center lg:text-left bg-[#2a2a2e] p-4 rounded-lg my-2">
-                            {item.responsibilities.map(
-                              (responsibility, rIndex) => (
-                                <li key={rIndex} className="mb-1">
-                                  {responsibility}
-                                </li>
-                              )
-                            )}
-                          </ul>
-                          {/* Company Information */}
-                          <div className="flex items-center gap-3">
-                            <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
-                            <p className="text-white">{item.company}</p>
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </ScrollArea>
-              </div>
-            </TabsContent>
-
             {/* education */}
             <TabsContent value="education" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
