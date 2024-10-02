@@ -18,12 +18,16 @@ const Home = () => {
               <span className="text-accent">Iris Huynh</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
-              I am a final-year student at the University of Greenwich, with a
-              Bachelor's degree in Computing. With a GPA of 3.3/4.0, I am
-              passionate about web development and eager to continue learning
-              and growing in the tech industry. I am actively seeking
-              opportunities to further develop my skills and kick-start my
-              career.
+              <p className="max-w-[500px] mb-9 text-white/80">
+                I am a graduate with a Bachelor's degree in Computing from the
+                University of Greenwich, holding a GPA of 3.3/4.0. I have a
+                solid understanding of software testing principles and
+                methodologies, and I am eager to apply and expand my expertise
+                in software testing, bug tracking, and quality assurance
+                processes. I am looking forward to contributing to a dynamic
+                team and gaining hands-on experience in ensuring product quality
+                and reliability through real-world projects.
+              </p>
             </p>
             {/* socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
