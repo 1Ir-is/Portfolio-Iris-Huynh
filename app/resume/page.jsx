@@ -8,7 +8,7 @@ import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
 const about = {
   title: "About Me",
   description:
-    "I am a recent graduate with a Bachelor's degree in Computing and a strong passion for software quality assurance. While I have experience in front-end and back-end development, as well as UI/UX design, I am now focused on ensuring the quality and reliability of software. I am proficient in HTML, CSS, JavaScript, React, .NET, Tailwind CSS, and Next.js, and I am eager to apply my skills in software testing, bug tracking, and quality assurance processes to contribute to a high-performing team.",
+    "I am a recent graduate with a Bachelor's degree in Computing and a knowledge for software quality assurance. While I have experience in front-end and back-end development, as well as UI/UX design, I am now focused on ensuring the quality and reliability of software. I am proficient in HTML, CSS, JavaScript, React, .NET, Tailwind CSS, and Next.js, and I am eager to apply my skills in software testing, bug tracking, and quality assurance processes to contribute to a high-performing team.",
 
   info: [
     {
@@ -21,7 +21,7 @@ const about = {
     },
     {
       fieldName: "Experience",
-      fieldValue: "Fresher",
+      fieldValue: "Intern",
     },
     {
       fieldName: "Nationality",
@@ -52,8 +52,8 @@ const education = {
     {
       degree: "Bachelor of Computing",
       school: "University of Greenwich",
-      duration: "2021 - Present",
-      gpa: "GPA: 3.3 / 4.0",
+      duration: "2021 - 2025",
+      gpa: "GPA: 3.5 / 4.0",
     },
   ],
 };

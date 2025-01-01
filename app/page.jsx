@@ -20,7 +20,7 @@ const Home = () => {
             <p className="max-w-[500px] mb-9 text-white/80">
               <p className="max-w-[500px] mb-9 text-white/80">
                 I am a graduate with a Bachelor's degree in Computing from the
-                University of Greenwich, holding a GPA of 3.3/4.0. I have a
+                University of Greenwich, holding a GPA of 3.5/4.0. I have a
                 solid understanding of software testing principles and
                 methodologies, and I am eager to apply and expand my expertise
                 in software testing, bug tracking, and quality assurance
